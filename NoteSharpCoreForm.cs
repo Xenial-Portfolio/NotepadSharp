@@ -76,6 +76,31 @@ namespace NotepadSharp
             
         }
 
+        private void lightToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _themeController.SetTheme(this, MenuSettingsToolStrip.Items, Color.Black, Color.White);
+        }
+
+        private void darkToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _themeController.SetTheme(this, MenuSettingsToolStrip.Items, Color.Wheat, Color.Black);
+        }
+
+        private void blueToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _themeController.SetTheme(this, MenuSettingsToolStrip.Items, Color.WhiteSmoke, Color.DodgerBlue);
+        }
+
+        private void greyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _themeController.SetTheme(this, MenuSettingsToolStrip.Items, Color.LightBlue, Color.DarkSlateGray);
+        }
+
+        private void greenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _themeController.SetTheme(this, MenuSettingsToolStrip.Items, Color.DarkSlateGray, Color.SpringGreen);
+        }
+
         #region Functions
         private void SaveFile()
         {
@@ -148,10 +173,5 @@ namespace NotepadSharp
 
         }
         #endregion
-
-        private void lightToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            _themeController.SetTheme(this);
-        }
     }
 }

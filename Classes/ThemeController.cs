@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace NotepadSharp.Classes
@@ -35,6 +33,9 @@ namespace NotepadSharp.Classes
 
                 if (pnlControl.GetType() == typeof(RichTextBox))
                     SetColorTextBox(pnlControl as RichTextBox, themeColorForeGround, themeColorBackground);
+
+                if (pnlControl.GetType() == typeof(Label))
+                    SetColorLabel(pnlControl as Label, themeColorForeGround, themeColorBackground);
             }
         }
 
@@ -49,37 +50,36 @@ namespace NotepadSharp.Classes
         {
             toolStrip.ForeColor = foreColor;
             toolStrip.BackColor = backColor;
-
-            foreach (ToolStripMenuItem stripControl in toolStrip.Items)
-            {
-                stripControl.BackColor = backColor;
-                stripControl.ForeColor = foreColor;
-            }
         }
 
-        public void SetTheme(Form form/*, Color foreColor, Color backColor*/)
+        public void SetTheme(Form form, ToolStripItemCollection collection, Color foreColor, Color backColor)
         {
-            form.BackColor = Color.White;
+            form.BackColor = backColor;
             foreach (Control control in form.Controls)
             {
                 if (control.GetType() == typeof(Button))
-                    SetColorButton(control as Button, Color.Black, Color.White);
+                    SetColorButton(control as Button, foreColor, backColor);
 
                 if (control.GetType() == typeof(Label))
-                    SetColorLabel(control as Label, Color.Black, Color.White);
+                    SetColorLabel(control as Label, foreColor, backColor);
 
                 if (control.GetType() == typeof(Panel))
                 {
-                    SetColorPanel(control as Panel, Color.Black, Color.White);
-                    SetColorInnerPanel(control as Panel, Color.Black, Color.White);
+                    SetColorPanel(control as Panel, foreColor, backColor);
+                    SetColorInnerPanel(control as Panel, foreColor, backColor);
                 }
 
                 if (control.GetType() == typeof(RichTextBox))
-                    SetColorTextBox(control as RichTextBox, Color.Black, Color.White);
+                    SetColorTextBox(control as RichTextBox, foreColor, backColor);
 
                 if (control.GetType() == typeof(ToolStrip))
-                    SetToolStripColor(control as ToolStrip, Color.Black, Color.White);
+                    SetToolStripColor(control as ToolStrip, foreColor, backColor);
+            }
 
+            foreach (ToolStripItem toolStripItem in collection)
+            {
+                toolStripItem.ForeColor = foreColor;
+                toolStripItem.BackColor = backColor;
             }
         }
     }
