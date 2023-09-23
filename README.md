@@ -27,3 +27,6 @@ ________________________________
 Themes -
 * Light
 * Dark
+* Blue
+* Grey
+* Green
