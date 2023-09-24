@@ -6,6 +6,9 @@ namespace NotepadSharp.Classes
 {
     public class ThemeController
     {
+        public Color ThemeBackColor;
+        public Color ThemeForeColor;
+
         public void SetColorButton(Button btn, Color themeColorForeGround, Color themeColorBackground)
         {
             btn.ForeColor = themeColorForeGround;
@@ -54,6 +57,9 @@ namespace NotepadSharp.Classes
 
         public void SetTheme(Form form, ToolStripItemCollection collection, Color foreColor, Color backColor)
         {
+            ThemeBackColor = backColor;
+            ThemeForeColor = foreColor;
+
             form.BackColor = backColor;
             foreach (Control control in form.Controls)
             {

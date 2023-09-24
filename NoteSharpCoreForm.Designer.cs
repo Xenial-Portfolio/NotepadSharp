@@ -34,7 +34,6 @@ namespace NotepadSharp
             this.ZoomOutButton = new System.Windows.Forms.Button();
             this.ZoomInButton = new System.Windows.Forms.Button();
             this.NewButton = new System.Windows.Forms.Button();
-            this.ReplaceButton = new System.Windows.Forms.Button();
             this.FindButton = new System.Windows.Forms.Button();
             this.RedoButton = new System.Windows.Forms.Button();
             this.UndoButton = new System.Windows.Forms.Button();
@@ -46,9 +45,10 @@ namespace NotepadSharp
             this.FileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SaveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SaveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.OpenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.CloseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.RenameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.EditToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.undoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,11 +57,10 @@ namespace NotepadSharp
             this.cutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.selectAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SearchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.findToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.replaceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.gotoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.VewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.textSizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.textSizeToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -72,13 +71,23 @@ namespace NotepadSharp
             this.themeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lightToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.darkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.blueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.greyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.greenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.OpenTextFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.SaveFileDialog = new System.Windows.Forms.SaveFileDialog();
-            this.greenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SearchPanel = new System.Windows.Forms.Panel();
+            this.CloseButton = new System.Windows.Forms.Label();
+            this.ReplaceButton = new System.Windows.Forms.Button();
+            this.NextButton = new System.Windows.Forms.Button();
+            this.ReplaceTextBox = new System.Windows.Forms.TextBox();
+            this.SearchTextBox = new System.Windows.Forms.TextBox();
+            this.FindLabel = new System.Windows.Forms.Label();
             this.HeaderSettingsPanel.SuspendLayout();
             this.MenuSettingsToolStrip.SuspendLayout();
+            this.SearchPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // NotepadTextBox
@@ -98,7 +107,6 @@ namespace NotepadSharp
             this.HeaderSettingsPanel.Controls.Add(this.ZoomOutButton);
             this.HeaderSettingsPanel.Controls.Add(this.ZoomInButton);
             this.HeaderSettingsPanel.Controls.Add(this.NewButton);
-            this.HeaderSettingsPanel.Controls.Add(this.ReplaceButton);
             this.HeaderSettingsPanel.Controls.Add(this.FindButton);
             this.HeaderSettingsPanel.Controls.Add(this.RedoButton);
             this.HeaderSettingsPanel.Controls.Add(this.UndoButton);
@@ -148,22 +156,11 @@ namespace NotepadSharp
             this.NewButton.UseVisualStyleBackColor = true;
             this.NewButton.Click += new System.EventHandler(this.NewButton_Click);
             // 
-            // ReplaceButton
-            // 
-            this.ReplaceButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ReplaceButton.ForeColor = System.Drawing.Color.Wheat;
-            this.ReplaceButton.Location = new System.Drawing.Point(581, 28);
-            this.ReplaceButton.Name = "ReplaceButton";
-            this.ReplaceButton.Size = new System.Drawing.Size(75, 23);
-            this.ReplaceButton.TabIndex = 9;
-            this.ReplaceButton.Text = "Replace";
-            this.ReplaceButton.UseVisualStyleBackColor = true;
-            // 
             // FindButton
             // 
             this.FindButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.FindButton.ForeColor = System.Drawing.Color.Wheat;
-            this.FindButton.Location = new System.Drawing.Point(500, 28);
+            this.FindButton.Location = new System.Drawing.Point(566, 28);
             this.FindButton.Name = "FindButton";
             this.FindButton.Size = new System.Drawing.Size(75, 23);
             this.FindButton.TabIndex = 8;
@@ -175,7 +172,7 @@ namespace NotepadSharp
             // 
             this.RedoButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.RedoButton.ForeColor = System.Drawing.Color.Wheat;
-            this.RedoButton.Location = new System.Drawing.Point(419, 28);
+            this.RedoButton.Location = new System.Drawing.Point(466, 28);
             this.RedoButton.Name = "RedoButton";
             this.RedoButton.Size = new System.Drawing.Size(75, 23);
             this.RedoButton.TabIndex = 7;
@@ -187,7 +184,7 @@ namespace NotepadSharp
             // 
             this.UndoButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.UndoButton.ForeColor = System.Drawing.Color.Wheat;
-            this.UndoButton.Location = new System.Drawing.Point(338, 28);
+            this.UndoButton.Location = new System.Drawing.Point(385, 28);
             this.UndoButton.Name = "UndoButton";
             this.UndoButton.Size = new System.Drawing.Size(75, 23);
             this.UndoButton.TabIndex = 6;
@@ -201,15 +198,15 @@ namespace NotepadSharp
             this.TextSizeLabel.ForeColor = System.Drawing.Color.Wheat;
             this.TextSizeLabel.Location = new System.Drawing.Point(823, 36);
             this.TextSizeLabel.Name = "TextSizeLabel";
-            this.TextSizeLabel.Size = new System.Drawing.Size(60, 15);
+            this.TextSizeLabel.Size = new System.Drawing.Size(66, 15);
             this.TextSizeLabel.TabIndex = 5;
-            this.TextSizeLabel.Text = "TextSize: 1";
+            this.TextSizeLabel.Text = "TextSize: 24";
             // 
             // SaveAsButton
             // 
             this.SaveAsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SaveAsButton.ForeColor = System.Drawing.Color.Wheat;
-            this.SaveAsButton.Location = new System.Drawing.Point(257, 28);
+            this.SaveAsButton.Location = new System.Drawing.Point(284, 28);
             this.SaveAsButton.Name = "SaveAsButton";
             this.SaveAsButton.Size = new System.Drawing.Size(75, 23);
             this.SaveAsButton.TabIndex = 3;
@@ -221,7 +218,7 @@ namespace NotepadSharp
             // 
             this.SaveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SaveButton.ForeColor = System.Drawing.Color.Wheat;
-            this.SaveButton.Location = new System.Drawing.Point(175, 28);
+            this.SaveButton.Location = new System.Drawing.Point(202, 28);
             this.SaveButton.Name = "SaveButton";
             this.SaveButton.Size = new System.Drawing.Size(75, 23);
             this.SaveButton.TabIndex = 2;
@@ -261,9 +258,10 @@ namespace NotepadSharp
             this.FileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.SaveAsToolStripMenuItem,
             this.SaveToolStripMenuItem,
+            this.toolStripSeparator2,
             this.OpenToolStripMenuItem,
             this.CloseToolStripMenuItem,
-            this.RenameToolStripMenuItem,
+            this.toolStripSeparator1,
             this.newToolStripMenuItem});
             this.FileToolStripMenuItem.ForeColor = System.Drawing.Color.Wheat;
             this.FileToolStripMenuItem.Name = "FileToolStripMenuItem";
@@ -273,41 +271,45 @@ namespace NotepadSharp
             // SaveAsToolStripMenuItem
             // 
             this.SaveAsToolStripMenuItem.Name = "SaveAsToolStripMenuItem";
-            this.SaveAsToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.SaveAsToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
             this.SaveAsToolStripMenuItem.Text = "Save As";
             this.SaveAsToolStripMenuItem.Click += new System.EventHandler(this.SaveAsButton_Click);
             // 
             // SaveToolStripMenuItem
             // 
             this.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem";
-            this.SaveToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.SaveToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
             this.SaveToolStripMenuItem.Text = "Save";
             this.SaveToolStripMenuItem.Click += new System.EventHandler(this.SaveButton_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(111, 6);
             // 
             // OpenToolStripMenuItem
             // 
             this.OpenToolStripMenuItem.Name = "OpenToolStripMenuItem";
-            this.OpenToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.OpenToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
             this.OpenToolStripMenuItem.Text = "Open";
             this.OpenToolStripMenuItem.Click += new System.EventHandler(this.OpenButton_Click);
             // 
             // CloseToolStripMenuItem
             // 
             this.CloseToolStripMenuItem.Name = "CloseToolStripMenuItem";
-            this.CloseToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.CloseToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
             this.CloseToolStripMenuItem.Text = "Close";
             this.CloseToolStripMenuItem.Click += new System.EventHandler(this.NewButton_Click);
             // 
-            // RenameToolStripMenuItem
+            // toolStripSeparator1
             // 
-            this.RenameToolStripMenuItem.Name = "RenameToolStripMenuItem";
-            this.RenameToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
-            this.RenameToolStripMenuItem.Text = "Rename";
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(111, 6);
             // 
             // newToolStripMenuItem
             // 
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
             this.newToolStripMenuItem.Text = "New";
             this.newToolStripMenuItem.Click += new System.EventHandler(this.NewButton_Click);
             // 
@@ -320,6 +322,7 @@ namespace NotepadSharp
             this.cutToolStripMenuItem,
             this.copyToolStripMenuItem,
             this.pasteToolStripMenuItem,
+            this.toolStripSeparator3,
             this.selectAllToolStripMenuItem});
             this.EditToolStripMenuItem.ForeColor = System.Drawing.Color.Wheat;
             this.EditToolStripMenuItem.Name = "EditToolStripMenuItem";
@@ -363,6 +366,11 @@ namespace NotepadSharp
             this.pasteToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.pasteToolStripMenuItem.Text = "Paste";
             // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(119, 6);
+            // 
             // selectAllToolStripMenuItem
             // 
             this.selectAllToolStripMenuItem.Name = "selectAllToolStripMenuItem";
@@ -372,9 +380,7 @@ namespace NotepadSharp
             // SearchToolStripMenuItem
             // 
             this.SearchToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.findToolStripMenuItem,
-            this.replaceToolStripMenuItem,
-            this.gotoToolStripMenuItem});
+            this.findToolStripMenuItem});
             this.SearchToolStripMenuItem.ForeColor = System.Drawing.Color.Wheat;
             this.SearchToolStripMenuItem.Name = "SearchToolStripMenuItem";
             this.SearchToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
@@ -386,18 +392,6 @@ namespace NotepadSharp
             this.findToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
             this.findToolStripMenuItem.Text = "Find";
             this.findToolStripMenuItem.Click += new System.EventHandler(this.FindButton_Click);
-            // 
-            // replaceToolStripMenuItem
-            // 
-            this.replaceToolStripMenuItem.Name = "replaceToolStripMenuItem";
-            this.replaceToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
-            this.replaceToolStripMenuItem.Text = "Replace";
-            // 
-            // gotoToolStripMenuItem
-            // 
-            this.gotoToolStripMenuItem.Name = "gotoToolStripMenuItem";
-            this.gotoToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
-            this.gotoToolStripMenuItem.Text = "Goto";
             // 
             // VewToolStripMenuItem
             // 
@@ -436,12 +430,14 @@ namespace NotepadSharp
             this.alwaysOnTopToolStripMenuItem.Name = "alwaysOnTopToolStripMenuItem";
             this.alwaysOnTopToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
             this.alwaysOnTopToolStripMenuItem.Text = "Always On Top";
+            this.alwaysOnTopToolStripMenuItem.Click += new System.EventHandler(this.alwaysOnTopToolStripMenuItem_Click);
             // 
             // restoreDefaultRoomToolStripMenuItem
             // 
             this.restoreDefaultRoomToolStripMenuItem.Name = "restoreDefaultRoomToolStripMenuItem";
             this.restoreDefaultRoomToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
             this.restoreDefaultRoomToolStripMenuItem.Text = "Restore Default Zoom";
+            this.restoreDefaultRoomToolStripMenuItem.Click += new System.EventHandler(this.restoreDefaultRoomToolStripMenuItem_Click);
             // 
             // SettingsToolStripMenuItem
             // 
@@ -457,40 +453,59 @@ namespace NotepadSharp
             this.themeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lightToolStripMenuItem,
             this.darkToolStripMenuItem,
+            this.toolStripSeparator4,
             this.blueToolStripMenuItem,
             this.greyToolStripMenuItem,
+            this.toolStripSeparator5,
             this.greenToolStripMenuItem});
             this.themeToolStripMenuItem.Name = "themeToolStripMenuItem";
-            this.themeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.themeToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
             this.themeToolStripMenuItem.Text = "Theme";
             // 
             // lightToolStripMenuItem
             // 
             this.lightToolStripMenuItem.Name = "lightToolStripMenuItem";
-            this.lightToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.lightToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
             this.lightToolStripMenuItem.Text = "Light";
             this.lightToolStripMenuItem.Click += new System.EventHandler(this.lightToolStripMenuItem_Click);
             // 
             // darkToolStripMenuItem
             // 
             this.darkToolStripMenuItem.Name = "darkToolStripMenuItem";
-            this.darkToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.darkToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
             this.darkToolStripMenuItem.Text = "Dark";
             this.darkToolStripMenuItem.Click += new System.EventHandler(this.darkToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(102, 6);
             // 
             // blueToolStripMenuItem
             // 
             this.blueToolStripMenuItem.Name = "blueToolStripMenuItem";
-            this.blueToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.blueToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
             this.blueToolStripMenuItem.Text = "Blue";
             this.blueToolStripMenuItem.Click += new System.EventHandler(this.blueToolStripMenuItem_Click);
             // 
             // greyToolStripMenuItem
             // 
             this.greyToolStripMenuItem.Name = "greyToolStripMenuItem";
-            this.greyToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.greyToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
             this.greyToolStripMenuItem.Text = "Grey";
             this.greyToolStripMenuItem.Click += new System.EventHandler(this.greyToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(102, 6);
+            // 
+            // greenToolStripMenuItem
+            // 
+            this.greenToolStripMenuItem.Name = "greenToolStripMenuItem";
+            this.greenToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
+            this.greenToolStripMenuItem.Text = "Green";
+            this.greenToolStripMenuItem.Click += new System.EventHandler(this.greenToolStripMenuItem_Click);
             // 
             // OpenTextFileDialog
             // 
@@ -504,12 +519,81 @@ namespace NotepadSharp
             this.SaveFileDialog.Filter = "*.txt|";
             this.SaveFileDialog.Title = "Save As";
             // 
-            // greenToolStripMenuItem
+            // SearchPanel
             // 
-            this.greenToolStripMenuItem.Name = "greenToolStripMenuItem";
-            this.greenToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.greenToolStripMenuItem.Text = "Green";
-            this.greenToolStripMenuItem.Click += new System.EventHandler(this.greenToolStripMenuItem_Click);
+            this.SearchPanel.BackColor = System.Drawing.Color.Black;
+            this.SearchPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.SearchPanel.Controls.Add(this.CloseButton);
+            this.SearchPanel.Controls.Add(this.ReplaceButton);
+            this.SearchPanel.Controls.Add(this.NextButton);
+            this.SearchPanel.Controls.Add(this.ReplaceTextBox);
+            this.SearchPanel.Controls.Add(this.SearchTextBox);
+            this.SearchPanel.Controls.Add(this.FindLabel);
+            this.SearchPanel.Location = new System.Drawing.Point(974, 77);
+            this.SearchPanel.Name = "SearchPanel";
+            this.SearchPanel.Size = new System.Drawing.Size(284, 100);
+            this.SearchPanel.TabIndex = 12;
+            this.SearchPanel.Visible = false;
+            // 
+            // CloseButton
+            // 
+            this.CloseButton.AutoSize = true;
+            this.CloseButton.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.CloseButton.ForeColor = System.Drawing.Color.Wheat;
+            this.CloseButton.Location = new System.Drawing.Point(259, 1);
+            this.CloseButton.Name = "CloseButton";
+            this.CloseButton.Size = new System.Drawing.Size(18, 20);
+            this.CloseButton.TabIndex = 16;
+            this.CloseButton.Text = "X";
+            // 
+            // ReplaceButton
+            // 
+            this.ReplaceButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ReplaceButton.ForeColor = System.Drawing.Color.Wheat;
+            this.ReplaceButton.Location = new System.Drawing.Point(200, 59);
+            this.ReplaceButton.Name = "ReplaceButton";
+            this.ReplaceButton.Size = new System.Drawing.Size(75, 23);
+            this.ReplaceButton.TabIndex = 15;
+            this.ReplaceButton.Text = "Replace";
+            this.ReplaceButton.UseVisualStyleBackColor = true;
+            this.ReplaceButton.Click += new System.EventHandler(this.ReplaceButton_Click);
+            // 
+            // NextButton
+            // 
+            this.NextButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.NextButton.ForeColor = System.Drawing.Color.Wheat;
+            this.NextButton.Location = new System.Drawing.Point(200, 29);
+            this.NextButton.Name = "NextButton";
+            this.NextButton.Size = new System.Drawing.Size(75, 23);
+            this.NextButton.TabIndex = 12;
+            this.NextButton.Text = "Find";
+            this.NextButton.UseVisualStyleBackColor = true;
+            this.NextButton.Click += new System.EventHandler(this.NextButton_Click);
+            // 
+            // ReplaceTextBox
+            // 
+            this.ReplaceTextBox.Location = new System.Drawing.Point(13, 59);
+            this.ReplaceTextBox.Name = "ReplaceTextBox";
+            this.ReplaceTextBox.Size = new System.Drawing.Size(181, 23);
+            this.ReplaceTextBox.TabIndex = 14;
+            // 
+            // SearchTextBox
+            // 
+            this.SearchTextBox.Location = new System.Drawing.Point(13, 30);
+            this.SearchTextBox.Name = "SearchTextBox";
+            this.SearchTextBox.Size = new System.Drawing.Size(181, 23);
+            this.SearchTextBox.TabIndex = 13;
+            // 
+            // FindLabel
+            // 
+            this.FindLabel.AutoSize = true;
+            this.FindLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.FindLabel.ForeColor = System.Drawing.Color.Wheat;
+            this.FindLabel.Location = new System.Drawing.Point(111, 2);
+            this.FindLabel.Name = "FindLabel";
+            this.FindLabel.Size = new System.Drawing.Size(69, 25);
+            this.FindLabel.TabIndex = 12;
+            this.FindLabel.Text = "Search";
             // 
             // NoteSharpCoreForm
             // 
@@ -517,6 +601,7 @@ namespace NotepadSharp
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(1270, 640);
+            this.Controls.Add(this.SearchPanel);
             this.Controls.Add(this.NotepadTextBox);
             this.Controls.Add(this.HeaderSettingsPanel);
             this.Name = "NoteSharpCoreForm";
@@ -527,6 +612,8 @@ namespace NotepadSharp
             this.HeaderSettingsPanel.PerformLayout();
             this.MenuSettingsToolStrip.ResumeLayout(false);
             this.MenuSettingsToolStrip.PerformLayout();
+            this.SearchPanel.ResumeLayout(false);
+            this.SearchPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -551,7 +638,6 @@ namespace NotepadSharp
         private System.Windows.Forms.ToolStripMenuItem SaveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem OpenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem CloseToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem RenameToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem undoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem redoToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
@@ -560,8 +646,6 @@ namespace NotepadSharp
         private System.Windows.Forms.ToolStripMenuItem pasteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem selectAllToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem findToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem replaceToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem gotoToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem alwaysOnTopToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem restoreDefaultRoomToolStripMenuItem;
@@ -571,7 +655,6 @@ namespace NotepadSharp
         private System.Windows.Forms.ToolStripMenuItem lightToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem darkToolStripMenuItem;
         private System.Windows.Forms.Button NewButton;
-        private System.Windows.Forms.Button ReplaceButton;
         private System.Windows.Forms.Button FindButton;
         private System.Windows.Forms.Button RedoButton;
         private System.Windows.Forms.Button UndoButton;
@@ -581,6 +664,18 @@ namespace NotepadSharp
         private System.Windows.Forms.ToolStripMenuItem blueToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem greyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem greenToolStripMenuItem;
+        private System.Windows.Forms.Panel SearchPanel;
+        private System.Windows.Forms.Label CloseButton;
+        private System.Windows.Forms.Button ReplaceButton;
+        private System.Windows.Forms.Button NextButton;
+        private System.Windows.Forms.TextBox ReplaceTextBox;
+        private System.Windows.Forms.TextBox SearchTextBox;
+        private System.Windows.Forms.Label FindLabel;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
     }
 }
 

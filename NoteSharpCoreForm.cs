@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Drawing;
 using System.IO;
+using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using NotepadSharp.Classes;
 
@@ -10,7 +12,7 @@ namespace NotepadSharp
     {
         private bool _isSaved;
         private string _path = string.Empty;
-        private string _undoText = string.Empty;
+        private int _fontSize = 24;
 
         private ThemeController _themeController = new ThemeController();
 
@@ -71,9 +73,19 @@ namespace NotepadSharp
             if (NotepadTextBox.CanRedo) NotepadTextBox.Redo();
         }
 
+        private void NextButton_Click(object sender, EventArgs e)
+        {
+            HighLightText();
+        }
+
+        private void ReplaceButton_Click(object sender, EventArgs e)
+        {
+            ReplaceText();
+        }
+
         private void FindButton_Click(object sender, EventArgs e)
         {
-            
+            SearchPanel.Visible = !SearchPanel.Visible;
         }
 
         private void lightToolStripMenuItem_Click(object sender, EventArgs e)
@@ -99,6 +111,18 @@ namespace NotepadSharp
         private void greenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             _themeController.SetTheme(this, MenuSettingsToolStrip.Items, Color.DarkSlateGray, Color.SpringGreen);
+        }
+
+        private void alwaysOnTopToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TopMost = !TopMost;
+        }
+
+        private void restoreDefaultRoomToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _fontSize = 24;
+            NotepadTextBox.Font = new Font("Arial", _fontSize, FontStyle.Bold);
+            TextSizeLabel.Text = $@"TextSize: {NotepadTextBox.Font.Size}";
         }
 
         #region Functions
@@ -154,23 +178,49 @@ namespace NotepadSharp
 
         private void ZoomIn()
         {
-            if (NotepadTextBox.ZoomFactor == 50f) return;
-            NotepadTextBox.ZoomFactor++;
+            if (NotepadTextBox.Font.Size == 50f) return;
+            NotepadTextBox.Font = new Font("Arial", _fontSize++, FontStyle.Bold);
 
-            TextSizeLabel.Text = $@"TextSize: {NotepadTextBox.ZoomFactor}";
+            TextSizeLabel.Text = $@"TextSize: {NotepadTextBox.Font.Size}";
         }
 
         private void ZoomOut()
         {
-            if (NotepadTextBox.ZoomFactor == 1f) return;
-            NotepadTextBox.ZoomFactor--;
+            if (NotepadTextBox.Font.Size == 1f) return;
+            NotepadTextBox.Font = new Font("Arial", _fontSize--, FontStyle.Bold);
 
-            TextSizeLabel.Text = $@"TextSize: {NotepadTextBox.ZoomFactor}";
+            TextSizeLabel.Text = $@"TextSize: {NotepadTextBox.Font.Size}";
         }
 
-        private void FindText()
+        private void HighLightText()
         {
+            var flags = TextFormatFlags.Left | TextFormatFlags.Top |
+                        TextFormatFlags.NoPadding | TextFormatFlags.WordBreak |
+                        TextFormatFlags.TextBoxControl;
 
+            var compareText = SearchTextBox.Text;
+            
+            var matchesIndex = Regex.Matches(NotepadTextBox.Text, compareText)
+                .Select(chr => chr.Index).ToList();
+
+            if (matchesIndex.Count <= 0) return;
+            foreach (var position in matchesIndex)
+            {
+                var p = NotepadTextBox.GetPositionFromCharIndex(position);
+                using var g = NotepadTextBox.CreateGraphics();
+                
+                TextRenderer.DrawText(g, compareText, NotepadTextBox.Font, p,
+                    NotepadTextBox.ForeColor, Color.LightGreen, flags);
+            }
+        }
+
+        private void ReplaceText()
+        {
+            var compareText = SearchTextBox.Text;
+            var replaceText = ReplaceTextBox.Text;
+
+            var notepadNewText = NotepadTextBox.Text.Replace(compareText, replaceText);
+            NotepadTextBox.Text = notepadNewText;
         }
         #endregion
     }
