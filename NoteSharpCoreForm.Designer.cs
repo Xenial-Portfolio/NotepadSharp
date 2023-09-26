@@ -56,7 +56,6 @@ namespace NotepadSharp
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.cutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.selectAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SearchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -85,6 +84,10 @@ namespace NotepadSharp
             this.ReplaceTextBox = new System.Windows.Forms.TextBox();
             this.SearchTextBox = new System.Windows.Forms.TextBox();
             this.FindLabel = new System.Windows.Forms.Label();
+            this.decoderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.base64ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.decodeSelectedTextToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.encodeSelectedTextToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.HeaderSettingsPanel.SuspendLayout();
             this.MenuSettingsToolStrip.SuspendLayout();
             this.SearchPanel.SuspendLayout();
@@ -246,7 +249,8 @@ namespace NotepadSharp
             this.EditToolStripMenuItem,
             this.SearchToolStripMenuItem,
             this.VewToolStripMenuItem,
-            this.SettingsToolStripMenuItem});
+            this.SettingsToolStripMenuItem,
+            this.decoderToolStripMenuItem});
             this.MenuSettingsToolStrip.Location = new System.Drawing.Point(0, 0);
             this.MenuSettingsToolStrip.Name = "MenuSettingsToolStrip";
             this.MenuSettingsToolStrip.Size = new System.Drawing.Size(1268, 24);
@@ -321,7 +325,6 @@ namespace NotepadSharp
             this.toolStripMenuItem1,
             this.cutToolStripMenuItem,
             this.copyToolStripMenuItem,
-            this.pasteToolStripMenuItem,
             this.toolStripSeparator3,
             this.selectAllToolStripMenuItem});
             this.EditToolStripMenuItem.ForeColor = System.Drawing.Color.Wheat;
@@ -351,20 +354,16 @@ namespace NotepadSharp
             // cutToolStripMenuItem
             // 
             this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
-            this.cutToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.cutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.cutToolStripMenuItem.Text = "Cut";
+            this.cutToolStripMenuItem.Click += new System.EventHandler(this.cutToolStripMenuItem_Click);
             // 
             // copyToolStripMenuItem
             // 
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.copyToolStripMenuItem.Text = "Copy";
-            // 
-            // pasteToolStripMenuItem
-            // 
-            this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
-            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
-            this.pasteToolStripMenuItem.Text = "Paste";
+            this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
@@ -374,8 +373,9 @@ namespace NotepadSharp
             // selectAllToolStripMenuItem
             // 
             this.selectAllToolStripMenuItem.Name = "selectAllToolStripMenuItem";
-            this.selectAllToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.selectAllToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.selectAllToolStripMenuItem.Text = "Select All";
+            this.selectAllToolStripMenuItem.Click += new System.EventHandler(this.selectAllToolStripMenuItem_Click);
             // 
             // SearchToolStripMenuItem
             // 
@@ -389,7 +389,7 @@ namespace NotepadSharp
             // findToolStripMenuItem
             // 
             this.findToolStripMenuItem.Name = "findToolStripMenuItem";
-            this.findToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
+            this.findToolStripMenuItem.Size = new System.Drawing.Size(97, 22);
             this.findToolStripMenuItem.Text = "Find";
             this.findToolStripMenuItem.Click += new System.EventHandler(this.FindButton_Click);
             // 
@@ -545,6 +545,7 @@ namespace NotepadSharp
             this.CloseButton.Size = new System.Drawing.Size(18, 20);
             this.CloseButton.TabIndex = 16;
             this.CloseButton.Text = "X";
+            this.CloseButton.Click += new System.EventHandler(this.CloseButton_Click);
             // 
             // ReplaceButton
             // 
@@ -595,6 +596,37 @@ namespace NotepadSharp
             this.FindLabel.TabIndex = 12;
             this.FindLabel.Text = "Search";
             // 
+            // decoderToolStripMenuItem
+            // 
+            this.decoderToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.base64ToolStripMenuItem});
+            this.decoderToolStripMenuItem.Name = "decoderToolStripMenuItem";
+            this.decoderToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
+            this.decoderToolStripMenuItem.Text = "Tools";
+            // 
+            // base64ToolStripMenuItem
+            // 
+            this.base64ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.decodeSelectedTextToolStripMenuItem,
+            this.encodeSelectedTextToolStripMenuItem});
+            this.base64ToolStripMenuItem.Name = "base64ToolStripMenuItem";
+            this.base64ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.base64ToolStripMenuItem.Text = "Base64";
+            // 
+            // decodeSelectedTextToolStripMenuItem
+            // 
+            this.decodeSelectedTextToolStripMenuItem.Name = "decodeSelectedTextToolStripMenuItem";
+            this.decodeSelectedTextToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.decodeSelectedTextToolStripMenuItem.Text = "Decode (Selected Text)";
+            this.decodeSelectedTextToolStripMenuItem.Click += new System.EventHandler(this.decodeSelectedTextToolStripMenuItem_Click);
+            // 
+            // encodeSelectedTextToolStripMenuItem
+            // 
+            this.encodeSelectedTextToolStripMenuItem.Name = "encodeSelectedTextToolStripMenuItem";
+            this.encodeSelectedTextToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.encodeSelectedTextToolStripMenuItem.Text = "Encode (Selected Text)";
+            this.encodeSelectedTextToolStripMenuItem.Click += new System.EventHandler(this.encodeSelectedTextToolStripMenuItem_Click);
+            // 
             // NoteSharpCoreForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -643,7 +675,6 @@ namespace NotepadSharp
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem cutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem pasteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem selectAllToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem findToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
@@ -676,6 +707,10 @@ namespace NotepadSharp
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.ToolStripMenuItem decoderToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem base64ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem decodeSelectedTextToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem encodeSelectedTextToolStripMenuItem;
     }
 }
 

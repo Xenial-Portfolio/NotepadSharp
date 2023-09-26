@@ -88,6 +88,11 @@ namespace NotepadSharp
             SearchPanel.Visible = !SearchPanel.Visible;
         }
 
+        private void CloseButton_Click(object sender, EventArgs e)
+        {
+            SearchPanel.Visible = !SearchPanel.Visible;
+        }
+
         private void lightToolStripMenuItem_Click(object sender, EventArgs e)
         {
             _themeController.SetTheme(this, MenuSettingsToolStrip.Items, Color.Black, Color.White);
@@ -125,6 +130,41 @@ namespace NotepadSharp
             TextSizeLabel.Text = $@"TextSize: {NotepadTextBox.Font.Size}";
         }
 
+        private void selectAllToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            NotepadTextBox.SelectAll();
+        }
+
+        private void cutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            NotepadTextBox.Cut();
+        }
+
+        private void copyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(NotepadTextBox.SelectedText);
+        }
+
+        private void decodeSelectedTextToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (NotepadTextBox.SelectionLength < 1) return;
+            var decodedText = Base64Encoder.Decode(NotepadTextBox.SelectedText);
+
+            MessageBox.Show($@"The Following - {decodedText} was copied to clipboard", @"Decoded Text - Copied To Clipboard",
+                 MessageBoxButtons.OK);
+
+            Clipboard.SetText(decodedText);
+        }
+
+        private void encodeSelectedTextToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (NotepadTextBox.SelectionLength < 1) return;
+            var encodedText = Base64Encoder.Encode(NotepadTextBox.SelectedText);
+
+            MessageBox.Show($@"The Following - {encodedText} was copied to clipboard", @"Encoded Text - Copied To Clipboard", MessageBoxButtons.OK);
+            Clipboard.SetText(encodedText);
+        }
+
         #region Functions
         private void SaveFile()
         {
@@ -139,8 +179,6 @@ namespace NotepadSharp
 
         private void SaveAs()
         {
-            _isSaved = true;
-
             SaveFileDialog.ShowDialog();
             if (string.IsNullOrEmpty(SaveFileDialog.FileName)) return;
 
@@ -148,6 +186,8 @@ namespace NotepadSharp
 
             _path = SaveFileDialog.FileName;
             Text = _path;
+
+            _isSaved = true;
         }
 
         private void Open()
